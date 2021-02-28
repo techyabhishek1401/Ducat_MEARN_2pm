@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+    body{
+        background: whitesmoke;
+    }
+    .card {
+        margin: 50px auto;
+        width: 400px;
+        height: 300px;
+        background: white;
+    }
+    .card-img-top{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        position: relative;
+        top:-30px;
+        border:2px double darkgrey
+    }
+    .bg-gray{
+        height: 70px;
+        background: gray;
+    }
+    ul {
+        border:2px solid black;
+        padding: 5px;
+    }
+    li{
+        display: inline-block;
+        width: 50px;
+    }
+    button {
+        position:fixed;
+        top:0;
+        left:0;
+    }
+</style>  
+</head>
+  <body>
+      
+
+  <button class="btn btn-danger">GET USER</button>
+     <div class="container"></div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ 
+  <script>
+
+      let cont=document.querySelector('.container');
+      var request = new XMLHttpRequest()
+      let tmp="";
+      let callApi= ()=>{
+        
+        request.open('GET', 'https://randomuser.me/api/', true)
+    request.onload = function () {
+  // Begin accessing JSON data here
+  console.log("response:",this.response)
+  var data = JSON.parse(this.response)
+   
+  if (request.status >= 200 && request.status < 400) {
+
+    data.results.forEach((user) => {
+      tmp+=`<div class="card text-center">
+       
+       <div class="bg-gray"></div>
+       <img class="card-img-top mx-auto" src='${user.picture.medium}' alt="">
+       <div class="card-body">
+         <h4 class="card-title">${user.name.title} ${user.name.first} ${user.name.last}</h4>
+         <p class="card-text">Body</p>
+         <ul>
+             <li><i class="fa fa-users"></i></li>
+             <li><i class="fa fa-users"></i></li>
+             <li><i class="fa fa-users"></i></li>
+             <li><i class="fa fa-users"></i></li>
+         </ul>
+       </div>
+     </div>`
+    })
+    cont.innerHTML=tmp;
+  } else {
+    console.log('error')
+  }
+}
+
+request.send()
+      }
+
+   
+ document.querySelector('button').addEventListener('click',()=>{
+    
+    // setTimeout(()=>{
+    //     callApi();
+    // },3000)
+    setInterval(() => {
+        callApi();
+    }, 1000);
+ })  
+    
+
+    //   setInterval(()=>{callApi()},2000)
+  </script>
+</body>
+</html>

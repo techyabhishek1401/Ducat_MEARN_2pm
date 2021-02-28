@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel='stylesheet' href="./style.css"  />
+<title>Ballon</title>
+
+<style>
+    .container {
+     background: white;
+      border: 5px double black;
+      border-radius: 10px;
+      width:500px;
+      height: 300px;
+      position: absolute;
+      top:50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+
+    }
+
+    .arrow {
+        width: 60px;
+        border: 2px solid brown;
+        position: relative;
+       
+    }
+
+    .ballon {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        border: 5px double blueviolet;
+        position: absolute;
+        left:88%;
+    }
+
+    #a{      
+        top:30px;     
+    }
+    #b{       
+        top:90px;        
+    }
+    #c{       
+        top:170px;       
+    }
+
+.score {
+width: 50px;
+float: right;
+}
+.miss {
+    width: 50px;
+}
+
+</style>
+</head>
+<body>
+
+    <div class="score bg-success text-white text-center">0</div>
+    <div class="miss bg-danger text-white text-center">0</div>
+    <div class="container">
+        <div class="arrow"></div>
+        <div class="ballon" id='a'></div>
+        <div class="ballon" id='b'></div>
+        <div class="ballon" id='c'></div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+<script>
+
+//   References
+
+let arrow=document.querySelector('.arrow');
+let ballons=document.querySelectorAll('.ballon');
+let container=document.querySelector('.container')
+let arrow_top=0,arrow_left=0,score=0,miss=0;
+let ballon_top=0;
+let activeBallon;
+ballons.forEach((ballon)=>{
+ ballon.addEventListener('click',(event)=>{
+
+    let previousActive=document.querySelector('.bg-primary');
+   if(previousActive){
+    previousActive.classList.remove('bg-primary');
+   }
+    ballon_top=event.target.offsetTop;
+    console.log("ballon top:",ballon_top)
+    event.target.classList.add('bg-primary');
+     
+ })
+})
+
+document.addEventListener('keydown',(e)=>{
+if(e.keyCode===40 && arrow_top <280){
+    arrow_top+=10;
+    arrow.style.top=arrow_top+'px';
+}
+
+if(e.keyCode===38 && arrow_top >0){
+    arrow_top-=10;
+    arrow.style.top=arrow_top+'px';
+}
+if(e.keyCode===13){
+ let arrow_interval= setInterval(()=>{
+
+    arrow_left+=5;
+    arrow.style.left=arrow_left+'px';
+    if(arrow_left===400){
+       console.log('arrow_left:',arrow_left)
+        if(arrow_top>=ballon_top && arrow_top<=ballon_top+50){
+            document.querySelector('.bg-primary').style.display='none';           
+            document.querySelector('.score').innerText=++score;
+        }
+        else {
+            document.querySelector('.miss').innerText=++miss; 
+        }
+        clearInterval(arrow_interval);
+        setTimeout(()=>{
+
+            arrow_top=0;
+            arrow_left=0;
+            arrow.style.left=arrow_left+'px';
+            arrow.style.top=arrow_top+'px';
+        },300)
+    }
+  },30)
+
+   
+}
+})
+
+
+/* note**
+Complete this game.
+    Show Game Status after 4 attempts
+    Replace Board With Status Message and Play again Button
+    Restart the game on Play Again
+ */
+</script>
+
+</body>
+</html>

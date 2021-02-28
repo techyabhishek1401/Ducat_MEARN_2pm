@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      
+    <div class="container">
+          <h6 class="text-center bg-dark text-white px-2 py-1">Changing the background of word where word length is greater than 8</h6>
+           <p>
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, ab voluptatum? Beatae neque velit, natus sint quod quos veritatis fuga molestiae accusamus ipsum iure obcaecati, unde, itaque dolores consectetur assumenda laborum dolor qui iste dolorum! Facere similique cumque, totam sequi vitae quo fugiat doloribus ad vel, facilis reprehenderit. Odit voluptatibus harum, suscipit atque accusantium illum blanditiis minima modi, vitae unde dolorum repudiandae aliquid natus laboriosam ipsa est quod deleniti cupiditate soluta beatae? Aliquid veritatis dolorem praesentium quasi distinctio, quaerat repellendus. Illo accusamus corporis mollitia. Culpa, non! Voluptatem ullam, molestiae ducimus aliquid fuga hic dolorem vel? Sed illum natus sit eveniet? Vitae, officiis, dolore perspiciatis harum architecto sunt aut eaque unde at expedita repellat recusandae tempora facere autem dolores ipsum, doloribus molestias assumenda sapiente blanditiis! Ducimus accusamus odit temporibus qui minus explicabo! Ipsum quibusdam, nostrum fugiat veritatis adipisci quae, est, consequatur repudiandae corporis quas amet iusto id. Eveniet officia, eaque iste delectus eius porro praesentium consequatur perspiciatis adipisci magnam qui, fugiat distinctio! Architecto nam nisi consectetur eaque velit deleniti dolore dolores itaque, provident ipsam eveniet porro alias. Amet hic sed atque ipsam fugit quos nisi ducimus corrupti, voluptatum esse veritatis, labore modi pariatur similique sint. Eligendi voluptates quasi delectus nihil molestias vitae numquam. Aliquid ab dolor assumenda esse accusamus, excepturi a iure aut? Quia dignissimos ex quos laboriosam enim dolorum molestias earum tempora quod alias? Reiciendis eveniet obcaecati iste praesentium inventore commodi possimus omnis quae temporibus impedit eligendi cupiditate eum quaerat aliquam rerum similique voluptatum expedita fuga, dignissimos perspiciatis sint nostrum harum! Minus iusto laborum reprehenderit exercitationem unde iste, alias et nam. Vitae excepturi temporibus maiores sint quasi nulla quae ea fuga illum eligendi, molestiae illo facere, perferendis sapiente ipsum autem at? Officia et sint obcaecati accusamus esse vitae sapiente architecto, dolorum quod eum doloremque perferendis placeat, vel sit molestias deserunt deleniti maxime doloribus ipsum beatae soluta! Sequi tempora ex cumque in neque quidem maxime debitis, consequuntur, recusandae atque doloribus. Harum quod possimus eos earum animi molestiae error at sit expedita eaque reiciendis beatae vitae ab molestias commodi modi eius autem, soluta dolor suscipit blanditiis porro! Neque quod officia corporis? Eveniet molestias quisquam unde beatae quo? Veniam iste molestiae, nam maxime exercitationem accusantium assumenda eum tempora incidunt repellat molestias a temporibus asperiores dolor! Atque mollitia sequi fugit pariatur expedita ut fuga. Quibusdam similique enim consequuntur debitis possimus nostrum, aspernatur mollitia numquam deleniti incidunt quia totam iusto optio doloribus nisi tempora quisquam.
+           </p>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+   
+   let p=document.querySelector('p');
+   p.innerHTML= p.innerText.split(' ')
+   .map(function(word){
+   return   word.length>=8 ? `<span style="background:yellow">${word}</span>` :word 
+  }).join(" ");
+    
+
+
+</script>
+
+  </body>
+</html>

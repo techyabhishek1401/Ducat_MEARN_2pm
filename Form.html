@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Form</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <style>
+     .container {
+         width: 400px;
+         position: absolute;        
+         top:50%;
+         left:50%; 
+         transform: translate(-50%,-50%); 
+        background:whitesmoke;
+        border-radius: 5px;
+        padding: 5px;
+      
+     }
+     table{
+         border: 2px solid black;
+     }
+     td {
+     width: 60px;   
+      }
+ </style>  
+</head>
+  <body>
+      
+
+    <div class="container">
+        <input type="text" class="form-control" name="Name" placeholder="Name">
+        <input type="text" class="form-control" name="Department" placeholder="Department">
+        <input type="password" class="form-control" name="Password" placeholder="Password">
+        <!-- <button class="btn btn-info">Add To Array</button> -->
+        <button class="btn btn-warning">Submit</button>
+  </div>
+      <div id="tableId">
+
+      </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <script>
+        let inputs=document.querySelectorAll('input');
+        let btn=document.querySelector('button');
+        let table= document.querySelector('#tableId');
+       let obj={},arr=[];
+      
+        inputs.forEach((input)=>{
+            input.addEventListener('keyup',(ev)=>{           
+               obj[ev.target.name]=ev.target.value;         
+        })
+        })
+       
+    //    btn[0].addEventListener('click',()=>{
+    //        arr.push(obj);
+    //        obj={}
+           
+    //    })
+       btn.addEventListener('click',()=>{
+           console.log("btn2")
+           console.log(arr);
+           arr.push(obj);
+           obj={}
+           let tableHtml ='<table border="2" class="table"><thead>';
+
+           arr.forEach((value)=>{
+            tableHtml += `<tr><td>${value.Name || 'null'}</td><td>${value.Department || 'null'}</td><td>${value.Password || 'null'}</td></tr>`;
+           })
+           tableHtml += '</thead></table>';
+           table.innerHTML = tableHtml;
+
+       })
+    </script>
+
+ </body>
+</html>

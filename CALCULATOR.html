@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+   .container {
+       width: 300px;
+       border: 2px solid black;
+       border-radius: 5px;
+   }
+
+</style>  
+</head>
+  <body>
+      
+     <h2>Calculator</h2>
+
+     <div class="container p-3">
+         <input placeholder="0" class="form-control mb-2"/>
+        <div class="row">
+            <div class="col"><button class="btn btn-danger btn-block" id="c" name="c">C</button></div>
+            <div class="col"><button class="btn btn-danger btn-block" id="bck" name="<-"><-</button></div>
+            <div class="col"><button class="btn btn-success btn-block ref"  name="/">/</button></div>
+            
+        </div>
+        <div class="row">
+            <div class="col border p-0"><button class="btn ref btn-info btn-block" name="7">7</button></div>
+            <div class="col border p-0"><button class="btn ref btn-info btn-block" name="8">8</button></div>
+            <div class="col border p-0"><button class="btn ref btn-info btn-block" name="9">9</button></div>
+            <div class="col border p-0"><button class="btn ref btn-success btn-block" name="*">X</button></div>
+        </div>
+        <div class="row">
+            <div class="col border p-0"><button class="btn ref btn-info btn-block" name="4">4</button></div>
+            <div class="col border p-0"><button class="btn ref btn-info btn-block" name="5">5</button></div>
+            <div class="col border p-0"><button class="btn ref btn-info btn-block" name="6">6</button></div>
+            <div class="col border p-0"><button class="btn ref btn-success btn-block" name="-">-</button></div>
+        </div>
+        <div class="row">
+            <div class="col border p-0"><button class="btn ref btn-info btn-block" name="1">1</button></div>
+            <div class="col border p-0"><button class="btn ref btn-info btn-block" name="2">2</button></div>
+            <div class="col border p-0"><button class="btn ref btn-info btn-block" name="3">3</button></div>
+            <div class="col border p-0"><button class="btn ref btn-success btn-block" name="+">+</button></div>
+        </div>
+        <div class="row">
+            <div class="col border p-0"><button class="btn  btn-primary btn-block" name="">+/-</button></div>
+            <div class="col border p-0"><button class="btn ref btn-info btn-block" name="0">0</button></div>
+            <div class="col border p-0"><button class="btn ref btn-info btn-block" name=".">.</button></div>
+            <div class="col border p-0"><button class="btn  btn-primary btn-block" id="equal" name="=">=</button></div>
+        </div>
+     </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ 
+   <script>
+// taking refernces
+let input_ref=document.querySelector('input');
+let button_refs=document.querySelectorAll('.ref');
+
+let result="";
+ button_refs.forEach(function(btn_ref){
+    btn_ref.addEventListener('click',function(event){
+    result=result+event.target.name;
+  input_ref.value=result;
+});
+ })
+
+// equal button
+ let equal=document.querySelector('#equal');
+ equal.addEventListener('click',function(e){
+    input_ref.value=eval(result);
+    result="";
+ })
+
+
+// clear button
+document.querySelector('#c').addEventListener('click',function(){
+    result="";
+    input_ref.value="";
+}) 
+
+// back button
+document.querySelector('#bck').addEventListener('click',function(){
+   
+    result=result.substr(0,result.length-1);
+    input_ref.value=result;
+}) 
+
+
+   </script>
+</body>
+</html>
