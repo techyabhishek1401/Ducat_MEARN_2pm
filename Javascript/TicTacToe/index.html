@@ -29,9 +29,41 @@
             <div class=" box" id='8'></div>
         </div>
     </div>
-
+ 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.min.js"></script>
-<script src="./script.js"></script>
+<script>
+   
+    let isXNext=true;
+    let box_ref=document.querySelectorAll('.box');
+
+    let boolArray=Array(9).fill(true);
+  box_ref.forEach(box=>{
+      box.addEventListener('click',(e)=>{
+         
+          if(isXNext){
+          
+            if(boolArray[e.target.id]){
+                e.target.innerHTML='0';
+                isXNext=false;
+                boolArray[e.target.id]=false;
+            }
+           
+          }
+          else {
+            if(boolArray[e.target.id]){
+                e.target.innerHTML='X';
+                isXNext=true;  
+                boolArray[e.target.id]=false;
+            }
+            
+           
+          }
+      })
+  })
+
+    let num;
+    
+</script>
 </body>
 </html>
