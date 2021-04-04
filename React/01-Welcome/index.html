@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script src="../js/babel.js"></script>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script type="text/babel">
+        /*
+        React Compoent- 1) Class  (Dynamic values)
+                        2) Function (Static Data)
+        */
+
+        function FunctionComponent() {
+            return <h1>I'm Function Component </h1>
+        }
+
+        class Welcome extends React.Component {
+
+            constructor(props) {
+                super(props);
+            }
+
+            render() {
+                return <div>
+                    <GoodBye />
+                    <h1>Hello </h1>
+                    <GoodBye />
+                    <h2>I'm  Abhsihek </h2>
+                    <GoodBye />
+
+
+                </div>
+            }
+        }
+
+
+
+
+
+
+
+        class GoodBye extends React.Component {
+
+            constructor(props) {
+                super(props);
+            }
+
+            render() {
+                return <h1>BYE BYE </h1>
+            }
+        }
+
+
+
+
+        ReactDOM.render(<Welcome />, document.getElementById('root'));
+
+
+        //document.getElementById('root').innerHTML=<h1>Hello</h1>
+    </script>
+</body>
+
+</html>
