@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import Table from '../Component/Table'
 export default class Form extends Component {
 
     constructor(props){
@@ -48,6 +48,7 @@ export default class Form extends Component {
     }
 
     handleEdit=(user)=>{
+        console.log("called from props")
         this.setState({name:user.name,age:user.age,department:user.department,toUpdate:true,tmp:user})
     }
     handleUpdate=()=>{
@@ -58,6 +59,17 @@ export default class Form extends Component {
   previous_users[userIndex]={...userToUpdate,name:this.state.name,age:this.state.age,department:this.state.department}
 this.setState({users:previous_users,toUpdate:false,name:"",age:"",department:""}) 
 }
+
+ handleDelete=(user)=>{
+     console.log("user to delete:",user);
+     const tmp_user=[...this.state.users];
+     const index=tmp_user.indexOf(user);
+     console.log("index:",index);
+     tmp_user.splice(index,1);
+     console.log("new user list:",tmp_user);
+     this.setState({users:tmp_user})
+ }
+
     render() {
         const {name,age,department,users,toUpdate}=this.state;
 
@@ -70,32 +82,16 @@ this.setState({users:previous_users,toUpdate:false,name:"",age:"",department:""}
               <input placeholder="Department" value={department} name="department"  onChange={this.handleChange}/> <br />
        
        {toUpdate ?  <button onClick={this.handleUpdate}>Update User</button>: <button onClick={this.handleSubmit}>Add User</button>}
-              
-      
-              <table border="2">
-                  <thead>
-                      <tr>
-                          <th>SNO</th>
-                          <th>Name</th>
-                          <th>Age</th>
-                          <th>Department</th>
-                          <th>Edit</th>
-                          <th>Delete</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      {users.map((user,index)=>{
-                       return <tr key={`user-${index}`}>
-                           <td>{index+1}</td>
-                            <td>{user.name}</td>
-                            <td>{user.age}</td>
-                            <td>{user.department}</td>
-                            <td><button onClick={this.handleEdit.bind(this,user)}>Edit</button></td>
-                            <td><button>Delete</button></td>
-                       </tr>
-                      })}
-                  </tbody>
-              </table>
+
+{/* 
+condition rendering
+ 1)  if we have to decide between 2 components- ternary opertaor
+2)  if we have only one component and we decide wheter to show it or not depending on some condition--And
+*/}
+
+
+     { users.length > 0 &&
+            <Table users={users} onEdit={this.handleEdit} onDelete={this.handleDelete}/>  }
             </div>
         )
     }
