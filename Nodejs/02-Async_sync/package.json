@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "promise": "nodemon Promises.js"
+    "promise": "nodemon Promises.js",
+    "promise2": "nodemon PromiseBased.js"
   },
   "keywords": [],
   "author": "",
